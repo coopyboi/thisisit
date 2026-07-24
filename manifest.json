@@ -1,0 +1,55 @@
+{
+  "manifest_version": 3,
+  "name": "Block Google AI Overviews",
+  "version": "1.0.0",
+  "description": "Completely blocks Google AI Overviews from loading at the network and DOM level.",
+  "permissions": [
+    "declarativeNetRequest",
+    "declarativeNetRequestWithHostAccess",
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "*://www.google.com/*",
+    "*://google.com/*",
+    "*://www.google.co.*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://www.google.com/*",
+        "*://google.com/*",
+        "*://www.google.co.*/*"
+      ],
+      "js": ["content.js"],
+      "css": ["blocker.css"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ruleset_1",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}
