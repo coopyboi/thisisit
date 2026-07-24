@@ -1,0 +1,26 @@
+/* Aggressive CSS blocking of AI Overview containers */
+/* These rules apply before JS runs */
+
+div[data-attrid*="ai overview"],
+div[data-attrid*="aiOverview"],
+div[data-attrid*="genai"],
+div[class*="ai-overview"],
+div[class*="AiOverview"],
+div[class*="genai"],
+div[class*="Generative"],
+div[data-md*="AI Overview"],
+div[data-md*="Overview"],
+#_aig,
+g-accordion-expander,
+div:has(> h2:contains("AI Overview")),
+div:has(> div > h3:contains("AI Overview")) {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  left: -99999px !important;
+}
